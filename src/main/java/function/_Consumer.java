@@ -10,6 +10,12 @@ public class _Consumer {
 
         showUserInfo.accept("Emrah", 33);
         System.out.println("--------------------------------------------------");
+
+        hello("Emrah", "Yurtlu", null);
+        System.out.println("--------------------------------------------------");
+
+        hello(null, "Yurtlu", value -> System.out.println("Sn. " + value + "; isim bilginizi girmediniz!"));
+        System.out.println("--------------------------------------------------");
     }
 
     // Consumer
@@ -17,4 +23,14 @@ public class _Consumer {
 
     // BiConsumer
     static BiConsumer<String, Integer> showUserInfo = (name, age) -> System.out.println("Hello, " + name + ". Your age is: " + age.toString());
+
+    static void hello(String name, String surname, Consumer<String> callback) {
+        if (name != null) {
+            System.out.println("Hello, " + name);
+        } else {
+            callback.accept(surname);
+        }
+    }
+
+    ;
 }
